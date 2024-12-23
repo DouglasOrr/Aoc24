@@ -5,7 +5,10 @@ fn main() {
     let mut left: Vec<i32> = Vec::new();
     let mut right: Vec<i32> = Vec::new();
     let pattern = Regex::new(r"(\d+)   (\d+)").unwrap();
-    for line in fs::read_to_string("inputs/day1/input.txt").unwrap().lines() {
+    for line in fs::read_to_string("inputs/day01/input.txt")
+        .unwrap()
+        .lines()
+    {
         let g = pattern.captures(line).unwrap();
         left.push(g.get(1).unwrap().as_str().parse::<i32>().unwrap());
         right.push(g.get(2).unwrap().as_str().parse::<i32>().unwrap());
