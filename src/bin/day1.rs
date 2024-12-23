@@ -13,23 +13,17 @@ fn main() {
 
     left.sort();
     right.sort();
-    let mut total_distance = 0;
-    for (a, b) in left.iter().zip(right.iter()) {
-        total_distance += (a - b).abs();
-    }
+    let total_distance: i32 = left
+        .iter()
+        .zip(right.iter())
+        .map(|(a, b)| (a - b).abs())
+        .sum();
     println!("part one: {}", total_distance);
 
     let mut counts: HashMap<i32, i32> = HashMap::new();
     for x in right {
-        if counts.contains_key(&x) {
-            *counts.get_mut(&x).unwrap() += 1;
-        } else {
-            counts.insert(x, 1);
-        }
+        *counts.entry(x).or_insert(0) += 1;
     }
-    let mut similarity_score = 0;
-    for x in left {
-        similarity_score += x * counts.get(&x).unwrap_or(&0);
-    }
+    let similarity_score: i32 = left.iter().map(|x| x * counts.get(x).unwrap_or(&0)).sum();
     println!("part two: {}", similarity_score);
 }
