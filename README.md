@@ -9,3 +9,5 @@ cargo run --bin day01
 ```
 
 Inputs in `inputs/day01/input.txt`, etc.
+
+Note: how slow is my code? [CodSpeed leaderboard](https://codspeed.io/advent).
